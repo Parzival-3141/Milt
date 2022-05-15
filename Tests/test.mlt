@@ -1,0 +1,31 @@
+func main() // entry point of the program
+{
+	print("Hello World!");
+	even_odd();
+	arithmetic();
+}
+
+func arithmetic()
+{
+	int x = 10;
+	float y = 2.5;
+	
+	print("x = 10\ny = 2.5");
+	print("(x + y * 2) / 3 equals " + (x + y * 2) / 3 );
+}
+
+func even_odd()
+{
+	func is_even(int n) -> bool
+	{
+		return n % 2 == 0;
+	}
+	
+	int[] nums = [0,1,2,3,4,5];
+			
+	foreach(int n in nums)
+	{
+		print(n + " is " 
+		+ (is_even(num) ? "even" : "odd"));
+	}
+}

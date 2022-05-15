@@ -1,0 +1,11 @@
+
+
+The Lexer/Parser
+Takes a source file, tokenizes it, and creates an abstract syntax tree (AST).
+
+https://en.wikipedia.org/wiki/Lexical_analysis
+
+
+Lexer reads a source file and pulls out all language relevant substrings as tokens.
+Checks for simple lexical grammar errors as it goes (i.e. using an invalid character or number string like 12f3.4i5)
+https://en.wikipedia.org/wiki/Lexical_grammar

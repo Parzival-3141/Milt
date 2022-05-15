@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Milt": {
+      "commandName": "Project",
+      "commandLineArgs": "..\\..\\..\\Tests\\test.mlt -l"
+    }
+  }
+}

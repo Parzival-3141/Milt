@@ -1,0 +1,171 @@
+Milt Language Spec
+
+Goals:
+	Procedural language (maybe optional limited OOP)
+	C descendant syntax
+	no header files
+	simple
+	unique
+	can specify functions w/o classes
+	
+
+Ideas:
+	Not operator:
+		like ++ and -- operators, but sets a bool to !bool
+		bool foo = true;
+		foo!!;
+		print(foo); // false
+	
+	Rust-like Builtin Todos:
+		RESEARCH RUST
+		(I think it works like this)
+		todo is either a keyword or part of the standard library
+		compiles fine, but causes a runtime error
+		not an exception or a crash
+
+	Function Scoping:
+		Functions can be declared anywhere, and obey scoping rules.
+		So you can nest functions, where they're local to the declared scope.
+		Functions declared in Types (Structs, Classes, whatever) are "local" to the Type declaration "scope".
+		Essentially, functions are part of the 'namespace' of the declared scope.
+		
+	Scoping Everything:
+		Everything is scope dependant.
+		Can declare anything in any scope (maybe).
+		So you could declare a struct within a function and that struct is local to the scope of the function.
+		
+		Could apply to source files too? 
+		Each file has it's own scope.
+		Files can be put into namespaces.
+		Code segments can be scoped to a namespace.
+		Example:
+			namespace Tests; //	whole file is part of 'Tests' namespace
+			
+			namespace Tests { // just this function is part of 'Tests'
+				func foo { ... }
+			}
+			
+			namespace this { // this function is local to this file only 
+				func bar { ... }
+			}
+			
+			
+			
+	
+	
+	
+Sample Code:
+
+	Hello_World.mlt: (just a filename, not part of the syntax)
+	
+	
+		func main() // entry point of the program
+		{
+			print("Hello World!");
+		}
+	
+
+
+	Even_Odd.mlt:
+	
+	
+		func is_even(int num) -> bool
+		{	
+			return num % 2 == 0;
+		}
+
+		func main() 
+		{
+			int[] nums = [0,1,2,3,4,5];
+			
+			foreach(int n in nums)
+			{
+				print(n + " is " 
+				+ (is_even(num) ? "even" : "odd"));
+			}
+		}
+	
+	
+	Tree.mlt:
+		//@Incomplete
+		struct Node
+		{
+			string value;
+			Node left  = nil; // key < value.length
+			Node right = nil; // key >= value.length
+			
+			Node(string value)
+			{
+				this.value = value;
+			}
+		}
+		
+		func get_key(Node n) -> int
+		{
+			return n.value.length;
+		}
+		
+		func add_node(Node root, string value)
+		{
+			//	Recursively searches the tree to find an empty leaf
+			//	and creates a new node there.
+			
+			if(get_key(root) >= value.length)
+			{
+				if(root.right != nil)
+				{
+					add_node(root.right, value);
+				}
+				else
+				{
+					root.right = new Node(value);
+				}
+			}
+			else
+			{
+				if(root.left != nil)
+				{
+					add_node(root.left, value);
+				}
+				else
+				{
+					root.left = new Node(value);
+				}
+			}
+		}
+		
+		func print_tree(Node root) -> string
+		{
+		a
+		b-e
+		c-d|f-g
+		
+		      a
+		      / \
+		   b     e
+		  / \   / \
+		 c   d f   g
+			
+			
+		}
+		
+		func main()
+		{
+		
+			Node root = new Node("Wow!");
+			string[] words = ["This", "is", "a", "tree!"];
+			
+			for(int i = 0; i < words.length; i++)
+			{
+				add_node(root, words[i]);
+			}
+			
+			print_tree(root);
+			
+		}
+	
+
+
+
+
+

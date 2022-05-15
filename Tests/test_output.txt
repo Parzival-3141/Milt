@@ -1,0 +1,153 @@
+FUNC func 
+IDENT main 
+PAREN_LEFT ( 
+PAREN_RIGHT ) 
+BRACE_LEFT { 
+IDENT print 
+PAREN_LEFT ( 
+STRING "Hello World!" Hello World!
+PAREN_RIGHT ) 
+SEMICOLON ; 
+IDENT even_odd 
+PAREN_LEFT ( 
+PAREN_RIGHT ) 
+SEMICOLON ; 
+IDENT arithmetic 
+PAREN_LEFT ( 
+PAREN_RIGHT ) 
+SEMICOLON ; 
+BRACE_RIGHT } 
+FUNC func 
+IDENT arithmetic 
+PAREN_LEFT ( 
+PAREN_RIGHT ) 
+BRACE_LEFT { 
+IDENT int 
+IDENT x 
+EQUAL = 
+NUMBER 10 10
+SEMICOLON ; 
+IDENT float 
+IDENT y 
+EQUAL = 
+NUMBER 2.5 2.5
+SEMICOLON ; 
+IDENT print 
+PAREN_LEFT ( 
+STRING "x = 10\ny = 2.5" x = 10\ny = 2.5
+PAREN_RIGHT ) 
+SEMICOLON ; 
+IDENT print 
+PAREN_LEFT ( 
+STRING "(x + y * 2) / 3 equals " (x + y * 2) / 3 equals 
+PLUS + 
+PAREN_LEFT ( 
+IDENT x 
+PLUS + 
+IDENT y 
+STAR * 
+NUMBER 2 2
+PAREN_RIGHT ) 
+SLASH / 
+NUMBER 3 3
+PAREN_RIGHT ) 
+SEMICOLON ; 
+BRACE_RIGHT } 
+FUNC func 
+IDENT even_odd 
+PAREN_LEFT ( 
+PAREN_RIGHT ) 
+BRACE_LEFT { 
+FUNC func 
+IDENT is_even 
+PAREN_LEFT ( 
+IDENT int 
+IDENT n 
+PAREN_RIGHT ) 
+MINUS - 
+GREATER > 
+IDENT bool 
+BRACE_LEFT { 
+RETURN return 
+IDENT n 
+PERCENT % 
+NUMBER 2 2
+EQUAL_EQUAL == 
+NUMBER 0 0
+SEMICOLON ; 
+BRACE_RIGHT } 
+IDENT int 
+BRACKET_LEFT [ 
+BRACKET_RIGHT ] 
+IDENT nums 
+EQUAL = 
+BRACKET_LEFT [ 
+NUMBER 0 0
+COMMA , 
+NUMBER 1 1
+COMMA , 
+NUMBER 2 2
+COMMA , 
+NUMBER 3 3
+COMMA , 
+NUMBER 4 4
+COMMA , 
+NUMBER 5 5
+BRACKET_RIGHT ] 
+SEMICOLON ; 
+IDENT foreach 
+PAREN_LEFT ( 
+IDENT int 
+IDENT n 
+IDENT in 
+IDENT nums 
+PAREN_RIGHT ) 
+BRACE_LEFT { 
+IDENT print 
+PAREN_LEFT ( 
+IDENT n 
+PLUS + 
+STRING " is "  is 
+PLUS + 
+PAREN_LEFT ( 
+IDENT is_even 
+PAREN_LEFT ( 
+IDENT num 
+PAREN_RIGHT ) 
+QUESTION ? 
+STRING "even" even
+COLON : 
+STRING "odd" odd
+PAREN_RIGHT ) 
+PAREN_RIGHT ) 
+SEMICOLON ; 
+BRACE_RIGHT } 
+BRACE_RIGHT } 
+EOF  
+
+Code Reconstruction Based On Tokens:
+func main ()
+{
+print ("Hello World!");
+even_odd ();
+arithmetic ();
+}
+func arithmetic ()
+{
+int x =10;
+float y =2.5;
+print ("x = 10\ny = 2.5");
+print ("(x + y * 2) / 3 equals "+(x +y *2)/3);
+}
+func even_odd ()
+{
+func is_even (int n )->bool 
+{
+return n %2==0;
+}
+int []nums =[0,1,2,3,4,5];
+foreach (int n in nums )
+{
+print (n +" is "+(is_even (num )?"even":"odd"));
+}
+}
